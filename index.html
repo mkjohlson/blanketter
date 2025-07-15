@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blankettcentral</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        <div class="max-w-2xl w-full mx-auto bg-white p-8 rounded-2xl shadow-lg text-center">
+            
+            <!-- Header -->
+            <header class="mb-10">
+                <h1 class="text-4xl font-bold text-gray-800">Blankettcentral</h1>
+                <p class="mt-2 text-gray-600">Välj en blankett nedan för att öppna och fylla i den.</p>
+            </header>
+
+            <!-- Länkar till blanketter -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                
+                <!-- Kartläggningsblankett -->
+                <a href="kartlaggning.html" class="block p-6 bg-teal-500 text-white rounded-xl shadow-md hover:bg-teal-600 transition-transform transform hover:-translate-y-1">
+                    <h2 class="text-xl font-bold">Kartläggningsblankett</h2>
+                    <p class="mt-1 text-sm opacity-90">Förfrågan om placering.</p>
+                </a>
+
+                <!-- Avvikelserapport -->
+                <a href="avvikelse.html" class="block p-6 bg-indigo-500 text-white rounded-xl shadow-md hover:bg-indigo-600 transition-transform transform hover:-translate-y-1">
+                    <h2 class="text-xl font-bold">Avvikelserapport</h2>
+                    <p class="mt-1 text-sm opacity-90">För allmänna avvikelser.</p>
+                </a>
+
+                <!-- Incidentrapport -->
+                <a href="incident.html" class="block p-6 bg-red-500 text-white rounded-xl shadow-md hover:bg-red-600 transition-transform transform hover:-translate-y-1">
+                    <h2 class="text-xl font-bold">Incidentrapport</h2>
+                    <p class="mt-1 text-sm opacity-90">För akuta, säkerhetskritiska händelser.</p>
+                </a>
+
+                <!-- Lex Sarah -->
+                <a href="lexsarah.html" class="block p-6 bg-purple-500 text-white rounded-xl shadow-md hover:bg-purple-600 transition-transform transform hover:-translate-y-1">
+                    <h2 class="text-xl font-bold">Lex Sarah-rapport</h2>
+                    <p class="mt-1 text-sm opacity-90">För allvarliga missförhållanden.</p>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
