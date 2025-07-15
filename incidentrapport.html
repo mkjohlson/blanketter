@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incidentrapport</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+            .printable-area {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+        }
+        fieldset {
+            border-width: 1px;
+        }
+        legend {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 sm:p-6 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg printable-area">
+        
+        <!-- Header -->
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-red-800">Incidentrapport</h1>
+            <p class="mt-2 text-gray-600">För HVB, Stödboende och Skyddat boende</p>
+            <p class="mt-4 text-sm text-gray-500 italic">Används för att dokumentera specifika, plötsliga och/eller säkerhetskritiska händelser. Hantera informationen med högsta sekretess.</p>
+        </header>
+
+        <form id="incidentForm">
+            <!-- DEL A: RAPPORTERING AV INCIDENT -->
+            <div class="bg-red-50 border-2 border-dashed border-red-200 rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-red-800 text-center">DEL A: Rapportering av Incident</h2>
+                <p class="text-center text-red-700 mt-1">Fylls i omedelbart av personal på plats</p>
+
+                <!-- 1. Grundläggande Information -->
+                <fieldset class="border border-red-200 rounded-lg p-6 mt-6">
+                    <legend class="px-2 text-lg font-semibold text-red-700">1. Grundläggande Information</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <div>
+                            <label for="handelsedatum" class="block text-sm font-medium text-gray-700">Datum för incident</label>
+                            <input type="date" id="handelsedatum" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="klockslag" class="block text-sm font-medium text-gray-700">Klockslag för incident</label>
+                            <input type="time" id="klockslag" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="plats" class="block text-sm font-medium text-gray-700">Plats för incidenten</label>
+                            <input type="text" id="plats" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="rapportor" class="block text-sm font-medium text-gray-700">Rapporterande personal</label>
+                            <input type="text" id="rapportor" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="rapportdatum" class="block text-sm font-medium text-gray-700">Datum för rapport</label>
+                            <input type="date" id="rapportdatum" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 2. Typ av Incident -->
+                <fieldset class="border border-red-200 rounded-lg p-6 mt-8">
+                    <legend class="px-2 text-lg font-semibold text-red-700">2. Typ av Incident</legend>
+                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Våldsincident</span></div>
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Hotbild (mot personal/boende)</span></div>
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Medicinsk incident (akut skada/sjukdom)</span></div>
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Självskada / Suicidförsök</span></div>
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Säkerhetsincident (brand, inbrott, larm)</span></div>
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Narkotika/Alkoholfylla</span></div>
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Allvarlig materiell skada</span></div>
+                        <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Annan allvarlig händelse</span></div>
+                    </div>
+                </fieldset>
+
+                <!-- 3. Händelsebeskrivning och Inblandade -->
+                <fieldset class="border border-red-200 rounded-lg p-6 mt-8">
+                    <legend class="px-2 text-lg font-semibold text-red-700">3. Händelsebeskrivning och Inblandade</legend>
+                    <div class="mt-4">
+                        <label for="handelsebeskrivning" class="block text-sm font-medium text-gray-700">Beskriv händelseförloppet (Vad hände?)</label>
+                        <textarea id="handelsebeskrivning" rows="5" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"></textarea>
+                    </div>
+                    <div class="mt-4">
+                        <label for="inblandade" class="block text-sm font-medium text-gray-700">Inblandade personer (Använd initialer/klient-ID)</label>
+                        <input type="text" id="inblandade" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm" placeholder="Ex: Klient A.A, Personal B.B, Polispatrull...">
+                    </div>
+                </fieldset>
+
+                <!-- 4. Omedelbara Åtgärder och Notifieringar -->
+                <fieldset class="border border-red-200 rounded-lg p-6 mt-8">
+                    <legend class="px-2 text-lg font-semibold text-red-700">4. Vidtagna Åtgärder och Notifieringar</legend>
+                    <div class="mt-4">
+                        <label for="omedelbara_atgarder" class="block text-sm font-medium text-gray-700">Vilka omedelbara åtgärder vidtogs?</label>
+                        <textarea id="omedelbara_atgarder" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm" placeholder="Ex: Första hjälpen, utrymning, tillkallat polis/ambulans, lugnande samtal..."></textarea>
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700">Vilka har notifierats om incidenten?</label>
+                        <div class="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                             <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Ansvarig chef</span></div>
+                             <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Bakjour</span></div>
+                             <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Polis (112/11414)</span></div>
+                             <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Ambulans (112)</span></div>
+                             <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Socialjour</span></div>
+                             <div class="flex items-start"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"><span class="ml-3 text-sm text-gray-700">Annan:</span></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            
+            <div class="page-break"></div>
+
+            <!-- DEL B: UPPFÖLJNING OCH ANALYS -->
+            <div class="mt-12 bg-blue-50 border-2 border-dashed border-blue-200 rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-blue-800 text-center">DEL B: Uppföljning och Analys</h2>
+                <p class="text-center text-blue-700 mt-1">Fylls i av ansvarig chef/utredare</p>
+
+                <!-- 5. Analys och Konsekvenser -->
+                <fieldset class="border border-blue-200 rounded-lg p-6 mt-6">
+                    <legend class="px-2 text-lg font-semibold text-blue-700">5. Analys och Konsekvenser</legend>
+                    <div class="mt-4">
+                        <label for="analys" class="block text-sm font-medium text-gray-700">Kort analys av bakomliggande orsaker</label>
+                        <textarea id="analys" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+                    </div>
+                    <div class="mt-4">
+                        <label for="konsekvenser" class="block text-sm font-medium text-gray-700">Incidentens konsekvenser (för klient, personal, verksamhet)</label>
+                        <textarea id="konsekvenser" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- 6. Förebyggande Åtgärder och Avslut -->
+                <fieldset class="border border-blue-200 rounded-lg p-6 mt-8">
+                    <legend class="px-2 text-lg font-semibold text-blue-700">6. Förebyggande Åtgärder och Avslut</legend>
+                    <div class="mt-4">
+                        <label for="atgarder" class="block text-sm font-medium text-gray-700">Beslutade förebyggande åtgärder (för att undvika upprepning)</label>
+                        <textarea id="atgarder" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+                    </div>
+                    <div class="mt-6">
+                         <label class="block text-sm font-medium text-gray-700">Behöver en formell avvikelserapport och/eller Lex Sarah-anmälan upprättas?</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="uppfoljning" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"><span class="ml-2 text-sm text-gray-700">Ja</span></div>
+                            <div class="flex items-center"><input type="radio" name="uppfoljning" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"><span class="ml-2 text-sm text-gray-700">Nej</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="ansvarig_chef" class="block text-sm font-medium text-gray-700">Ansvarig chef/utredare</label>
+                            <input type="text" id="ansvarig_chef" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="avslut_datum" class="block text-sm font-medium text-gray-700">Datum för avslut</label>
+                            <input type="date" id="avslut_datum" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+
+        <!-- Print Button -->
+        <div class="mt-12 text-center no-print">
+            <button onclick="window.print()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <svg class="w-5 h-5 mr-3 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5 2a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2H5zm3 1a1 1 0 000 2h6a1 1 0 100-2H8zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H6z" clip-rule="evenodd" />
+                </svg>
+                Skriv ut / Spara som PDF
+            </button>
+        </div>
+    </div>
+    <script>
+        // Sätter dagens datum automatiskt i rapportdatum-fältet
+        document.getElementById('rapportdatum').valueAsDate = new Date();
+    </script>
+</body>
+</html>
