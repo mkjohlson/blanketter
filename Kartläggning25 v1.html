@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartläggningsblankett</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+            .printable-area {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+            .rating-table th, .rating-table td {
+                padding: 0.5rem;
+                text-align: center;
+            }
+        }
+        fieldset {
+            border-width: 1px;
+        }
+        legend {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+        }
+        .rating-table th, .rating-table td {
+            padding: 0.75rem 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 sm:p-6 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg printable-area">
+        
+        <!-- Header -->
+        <header class="mb-8 text-center border-b-2 pb-6 border-teal-200">
+            <h1 class="text-3xl font-bold text-teal-800">Kartläggningsblankett</h1>
+            <p class="mt-2 text-gray-600">Inför placering på HVB, Stödboende eller Skyddat boende</p>
+        </header>
+
+        <!-- Instructions -->
+        <div class="mb-8 bg-teal-50 border border-teal-200 rounded-lg p-4">
+            <h2 class="font-semibold text-teal-800">Instruktioner till placerande socialtjänst</h2>
+            <p class="mt-1 text-sm text-gray-700">Svara på frågorna så fullständigt som möjligt. Ett väl ifyllt dokument ökar möjligheterna till en mer korrekt och lyckad matchning för klienten.</p>
+        </div>
+
+        <form id="kartlaggningForm">
+            <!-- Kontaktuppgifter -->
+            <fieldset class="border border-gray-300 rounded-lg p-6 mb-8">
+                <legend class="px-2 text-lg font-semibold text-gray-700">Placerande socialtjänst</legend>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                    <div>
+                        <label for="kommun" class="block text-sm font-medium text-gray-700">Placerande kommun</label>
+                        <input type="text" id="kommun" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="kontaktperson" class="block text-sm font-medium text-gray-700">Kontaktperson</label>
+                        <input type="text" id="kontaktperson" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="socsek" class="block text-sm font-medium text-gray-700">Ansvarig socialsekreterare</label>
+                        <input type="text" id="socsek" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="telefon" class="block text-sm font-medium text-gray-700">Telefon</label>
+                        <input type="tel" id="telefon" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="mobil" class="block text-sm font-medium text-gray-700">Mobil</label>
+                        <input type="tel" id="mobil" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="epost" class="block text-sm font-medium text-gray-700">E-post</label>
+                        <input type="email" id="epost" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Basinformation -->
+            <fieldset class="border border-gray-300 rounded-lg p-6 mb-8">
+                <legend class="px-2 text-lg font-semibold text-gray-700">Basinformation</legend>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <label for="datum" class="block text-sm font-medium text-gray-700">Dagens datum</label>
+                        <input type="date" id="datum" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="initialer" class="block text-sm font-medium text-gray-700">Klientens initialer</label>
+                        <input type="text" id="initialer" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="kon" class="block text-sm font-medium text-gray-700">Kön</label>
+                        <input type="text" id="kon" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="alder" class="block text-sm font-medium text-gray-700">Ålder</label>
+                        <input type="number" id="alder" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="ursprung" class="block text-sm font-medium text-gray-700">Ursprung (om ej svensk)</label>
+                        <input type="text" id="ursprung" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="sprak" class="block text-sm font-medium text-gray-700">Språk (om ej svenska)</label>
+                        <input type="text" id="sprak" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Situationsbeskrivning -->
+            <fieldset class="border border-gray-300 rounded-lg p-6 mb-8">
+                <legend class="px-2 text-lg font-semibold text-gray-700">Situationsbeskrivning</legend>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+                    <div>
+                        <label for="kand_sedan" class="block text-sm font-medium text-gray-700">Känd hos socialtjänsten sedan</label>
+                        <input type="date" id="kand_sedan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tidigare placering?</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="tidigare_placering" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Ja</span></div>
+                            <div class="flex items-center"><input type="radio" name="tidigare_placering" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Nej</span></div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="tidigare_form" class="block text-sm font-medium text-gray-700">Om ja, beskriv vilken form av insats</label>
+                        <textarea id="tidigare_form" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Placerad inom lagrum</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="lagrum" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">SoL</span></div>
+                            <div class="flex items-center"><input type="radio" name="lagrum" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">LVU</span></div>
+                            <div class="flex items-center"><input type="radio" name="lagrum" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Annat</span></div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="page-break"></div>
+
+            <!-- Detaljerad information -->
+            <fieldset class="border border-gray-300 rounded-lg p-6 mb-8">
+                <legend class="px-2 text-lg font-semibold text-gray-700">Detaljerad information</legend>
+                <div class="space-y-8 mt-4">
+                    <div>
+                        <label for="bakgrund" class="block text-sm font-medium text-gray-700">Bakgrundsinformation och problematik</label>
+                        <textarea id="bakgrund" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                     <div>
+                        <label class="block text-sm font-medium text-gray-700">Har klienten använt droger eller alkohol?</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="droger" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Ja</span></div>
+                            <div class="flex items-center"><input type="radio" name="droger" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Nej</span></div>
+                        </div>
+                        <label for="droger_beskrivning" class="block text-sm font-medium text-gray-700 mt-2">Om ja, beskriv (typ, frekvens, bedömning av bruk)</label>
+                        <textarea id="droger_beskrivning" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Har klienten begått brott?</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="kriminalitet" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Ja</span></div>
+                            <div class="flex items-center"><input type="radio" name="kriminalitet" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Nej</span></div>
+                        </div>
+                        <label for="kriminalitet_beskrivning" class="block text-sm font-medium text-gray-700 mt-2">Om ja, beskriv (typ av brott, omfattning)</label>
+                        <textarea id="kriminalitet_beskrivning" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Hälsa -->
+             <fieldset class="border border-gray-300 rounded-lg p-6 mb-8">
+                <legend class="px-2 text-lg font-semibold text-gray-700">Hälsa</legend>
+                <div class="space-y-8 mt-4">
+                    <div>
+                        <label for="halsostatus" class="block text-sm font-medium text-gray-700">Beskriv klientens psykiska och fysiska hälsostatus</label>
+                        <textarea id="halsostatus" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                    <div>
+                        <label for="sjukdomar" class="block text-sm font-medium text-gray-700">Kända sjukdomar eller smittor</label>
+                        <input type="text" id="sjukdomar" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Har hälsoundersökning genomförts?</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="halsoundersokning" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Ja</span></div>
+                            <div class="flex items-center"><input type="radio" name="halsoundersokning" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Nej</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Använder klienten mediciner?</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="mediciner" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Ja</span></div>
+                            <div class="flex items-center"><input type="radio" name="mediciner" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Nej</span></div>
+                        </div>
+                        <label for="mediciner_beskrivning" class="block text-sm font-medium text-gray-700 mt-2">Om ja, ange vilka mediciner och i vilken omfattning</label>
+                        <textarea id="mediciner_beskrivning" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                     <div>
+                        <label for="diagnoser" class="block text-sm font-medium text-gray-700">Diagnoser (fysiska, psykiska, kognitiva, NPF)</label>
+                        <textarea id="diagnoser" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sociala Relationer -->
+            <fieldset class="border border-gray-300 rounded-lg p-6 mb-8">
+                <legend class="px-2 text-lg font-semibold text-gray-700">Sociala Relationer</legend>
+                <div class="space-y-8 mt-4">
+                    <div>
+                        <label for="familj" class="block text-sm font-medium text-gray-700">Familjesituation och socialt nätverk</label>
+                        <textarea id="familj" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Samtycker vårdnadshavare till placering?</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center"><input type="radio" name="samtycke" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Ja</span></div>
+                            <div class="flex items-center"><input type="radio" name="samtycke" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Nej</span></div>
+                             <div class="flex items-center"><input type="radio" name="samtycke" class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-500"><span class="ml-2 text-sm text-gray-700">Ej relevant</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="ovrigt" class="block text-sm font-medium text-gray-700">Övrig information av betydelse</p>
+                        <textarea id="ovrigt" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <div class="page-break"></div>
+            
+            <!-- Skattning -->
+            <fieldset class="border border-gray-300 rounded-lg p-6 mb-8">
+                <legend class="px-2 text-lg font-semibold text-gray-700">Skattning av klienten</legend>
+                <p class="text-sm text-gray-600 mt-2 mb-4">Skatta klienten utifrån er kännedom. Välj ett alternativ per rad.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-500 rating-table">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                            <tr>
+                                <th class="text-left py-3 px-2 w-2/5">Påstående</th>
+                                <th class="text-center py-3 px-2">Instämmer inte alls</th>
+                                <th class="text-center py-3 px-2">Instämmer inte</th>
+                                <th class="text-center py-3 px-2">Neutral</th>
+                                <th class="text-center py-3 px-2">Instämmer</th>
+                                <th class="text-center py-3 px-2">Instämmer helt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b"><td class="font-medium text-gray-900 px-2 py-4">Har klienten behov av behandling för riskbruk av droger/alkohol?</td>
+                                <td class="text-center"><input type="radio" name="skattning1" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning1" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning1" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning1" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning1" class="h-4 w-4 text-teal-600"></td>
+                            </tr>
+                            <tr class="bg-gray-50 border-b"><td class="font-medium text-gray-900 px-2 py-4">Har klienten behov av behandling av kriminellt riskbeteende?</td>
+                                <td class="text-center"><input type="radio" name="skattning2" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning2" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning2" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning2" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning2" class="h-4 w-4 text-teal-600"></td>
+                            </tr>
+                            <tr class="bg-white border-b"><td class="font-medium text-gray-900 px-2 py-4">Har klienten behov av behandling avseende utåtagerande beteende?</td>
+                                <td class="text-center"><input type="radio" name="skattning3" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning3" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning3" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning3" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning3" class="h-4 w-4 text-teal-600"></td>
+                            </tr>
+                            <tr class="bg-gray-50 border-b"><td class="font-medium text-gray-900 px-2 py-4">Utsätter sig klienten för risker (olämpliga miljöer, droger, kriminalitet)?</td>
+                                <td class="text-center"><input type="radio" name="skattning4" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning4" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning4" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning4" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning4" class="h-4 w-4 text-teal-600"></td>
+                            </tr>
+                            <tr class="bg-white border-b"><td class="font-medium text-gray-900 px-2 py-4">Har klienten uppvisat beteende av att vilja skada sig själv eller andra?</td>
+                                <td class="text-center"><input type="radio" name="skattning5" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning5" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning5" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning5" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning5" class="h-4 w-4 text-teal-600"></td>
+                            </tr>
+                            <tr class="bg-gray-50 border-b"><td class="font-medium text-gray-900 px-2 py-4">Bedömer ni att klienten samverkar till insatsen?</td>
+                                <td class="text-center"><input type="radio" name="skattning6" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning6" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning6" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning6" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning6" class="h-4 w-4 text-teal-600"></td>
+                            </tr>
+                            <tr class="bg-white border-b"><td class="font-medium text-gray-900 px-2 py-4">Har klienten behov av att utredas ytterligare?</td>
+                                <td class="text-center"><input type="radio" name="skattning7" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning7" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning7" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning7" class="h-4 w-4 text-teal-600"></td><td class="text-center"><input type="radio" name="skattning7" class="h-4 w-4 text-teal-600"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </form>
+
+        <!-- Avslutning och instruktion -->
+        <div class="mt-12 text-center">
+            <p class="text-gray-600">Tack för ditt engagemang och för att du lämnar information i vårt dokument. Vi återkommer om vi har ytterligare frågor.</p>
+            
+            <div class="mt-8 mb-12 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 text-left no-print" role="alert">
+                <p class="font-bold">Viktig instruktion för inlämning</p>
+                <p>Efter att du har fyllt i och sparat/skrivit ut denna blankett, vänligen skicka den via <strong>säker e-post</strong>, post eller fax.</p>
+                <p class="mt-2">Kontaktuppgifter för detta (e-postadress, postadress, faxnummer) finns angivet i det e-postmeddelande där du mottog länken till detta dokument.</p>
+            </div>
+        </div>
+
+        <!-- Print Button -->
+        <div class="text-center no-print">
+            <button onclick="window.print()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <svg class="w-5 h-5 mr-3 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5 2a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2H5zm3 1a1 1 0 000 2h6a1 1 0 100-2H8zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H6z" clip-rule="evenodd" />
+                </svg>
+                Skriv ut / Spara som PDF
+            </button>
+        </div>
+    </div>
+    <script>
+        // Sätter dagens datum automatiskt i datum-fältet
+        document.getElementById('datum').valueAsDate = new Date();
+    </script>
+</body>
+</html>
